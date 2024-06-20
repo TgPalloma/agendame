@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mostrar Reuniao</title>
+</head>
+<body>
+    <h1 th:text="'Reuniao com ' + ${reuniao.vendedor} + ' e ' + ${reuniao.nomeConvidado} + ' da ' + ${reuniao.nomeEmpresa}"></h1>
+
+    <h2>Agenda</h2>
+    <p th:text="${reuniao.data} + ' as ' + ${reuniao.hora}"></p>
+
+    <h2>Informações para contato</h2>
+    <p th:text="'Telefone: ' + ${reuniao.telefone}"></p>
+    <p th:text="'E-mail: ' + ${reuniao.emailConvidado}"></p>
+
+    <h2>Informações para reunião</h2>
+    <p th:text="${reuniao.informacoes}"></p>
+
+    <p></p>
+    <p><a th:href="@{/agenda/{id}/edit(id=${reuniao.id})}"><input type="button" value="Editar Reunião"></a></p>
+
+</body>
+</html>

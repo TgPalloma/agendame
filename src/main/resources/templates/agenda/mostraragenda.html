@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br"  xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Agenda - Próximos Compromissos</title>
+</head>
+<body>
+<table border="1px">
+
+    <thead>
+        <tr>
+            <th>DIA E HORA CRIADO</th>
+            <th>DATA</th>
+            <th>HORA</th>
+            <th>NOME DA EMPRESA</th>
+            <th>COLABORADORES</th>
+            <th>CONVIDADO</th>
+            <th>CARGO</th>
+            <th>TELEFONE</th>
+            <th>E-MAIL</th>
+            <th>VENDEDOR</th>
+            <th>EVENTO</th>
+            <th>INFORMAÇÕES</th>
+            <th>AÇÕES</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr th:each="reuniao : ${lista_reunioes}">
+            <td th:text="${reuniao.dataHoraCriacao}"></td>
+            <td th:text="${reuniao.data}"></td>
+            <td th:text="${reuniao.hora}"></td>
+            <td th:text="${reuniao.nomeEmpresa}"></td>
+            <td th:text="${reuniao.numeroColaboradores}"></td>
+            <td th:text="${reuniao.nomeConvidado}"></td>
+            <td th:text="${reuniao.cargoConvidado}"></td>
+            <td th:text="${reuniao.telefone}"></td>
+            <td th:text="${reuniao.emailConvidado}"></td>
+            <td th:text="${reuniao.vendedor}"></td>
+            <td th:text="${reuniao.fonteLead}"></td>
+            <td th:text="${reuniao.informacoes}"></td>
+            <td>
+                <a th:href="@{/agenda/{id}(id=${reuniao.id})}">Visualizar</a>
+<!--                <a th:href="@"></a>-->
+            </td>
+        </tr>
+    </tbody>
+
+</table>
+
+</body>
+</html>
