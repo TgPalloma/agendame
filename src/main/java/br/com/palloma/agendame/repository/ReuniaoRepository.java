@@ -1,5 +1,6 @@
 package br.com.palloma.agendame.repository;
 
+import br.com.palloma.agendame.model.reuniao.DadosAtualizarReuniao;
 import br.com.palloma.agendame.model.reuniao.DadosCadastrarReuniao;
 import br.com.palloma.agendame.model.reuniao.DadosMostrarReuniao;
 import br.com.palloma.agendame.model.reuniao.Reuniao;
@@ -8,13 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Random;
 
 @Repository
 public class ReuniaoRepository {
 
-    List<Reuniao> reunioes = new ArrayList<>();
+    HashMap<Integer,Reuniao> reunioes = new HashMap<>();
 
     @Autowired
     DataHora dataHora;
@@ -24,22 +25,40 @@ public class ReuniaoRepository {
         Random random = new Random();
         int id = random.nextInt(100000);
 
-        reunioes.add(new Reuniao(id, dataHora.dataHoraAtual(), dados));
+        reunioes.put(id, new Reuniao(id, dataHora.dataHoraAtual(), dados));
 
         System.out.println("Reunião com " + dados.nomeEmpresa() + " marcada");
         System.out.println(reunioes);
     }
 
     public DadosMostrarReuniao buscarReuniao (int id) {
-        for (Reuniao reuniao : reunioes) {
-            if (reuniao.getId().equals(id)) {
-                return new DadosMostrarReuniao(reuniao);
-            }
+
+        if (reunioes.containsKey(id)) {
+            return new DadosMostrarReuniao(reunioes.get(id));
         }
         return null;
     }
 
     public ArrayList<Reuniao> listaReunioes() {
-        return new ArrayList<Reuniao>(reunioes);
+        return new ArrayList<>(reunioes.values());
+    }
+
+    public boolean atualizarReuniao (DadosAtualizarReuniao dados) {
+       if (reunioes.containsKey(dados.id())) {
+           Reuniao reuniao = new Reuniao(dados.id(), ,))
+           reunioes.replace(dados.id(), reuniao);
+           return true;
+       } else {
+           return false;
+       }
+    }
+
+    public Boolean excluirReuniao (int id) {
+        if (reunioes.containsKey(id)) {
+            reunioes.remove(id);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

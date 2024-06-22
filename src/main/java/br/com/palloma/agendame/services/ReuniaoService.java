@@ -1,5 +1,6 @@
 package br.com.palloma.agendame.services;
 
+import br.com.palloma.agendame.model.reuniao.DadosAtualizarReuniao;
 import br.com.palloma.agendame.model.reuniao.DadosCadastrarReuniao;
 import br.com.palloma.agendame.model.reuniao.DadosMostrarReuniao;
 import br.com.palloma.agendame.model.reuniao.Reuniao;
@@ -30,5 +31,21 @@ public class ReuniaoService {
             return reuniao;
         }
         return null;
+    }
+
+    public Boolean atualizarReuniao(DadosAtualizarReuniao dados) {
+        if(reuniaoRepository.atualizarReuniao(dados)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public Boolean excluirReuniao(int id) {
+        if (reuniaoRepository.excluirReuniao(id)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
