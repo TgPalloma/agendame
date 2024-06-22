@@ -1,6 +1,7 @@
 package br.com.palloma.agendame.repository;
 
-import br.com.palloma.agendame.model.reuniao.DadosReuniao;
+import br.com.palloma.agendame.model.reuniao.DadosCadastrarReuniao;
+import br.com.palloma.agendame.model.reuniao.DadosMostrarReuniao;
 import br.com.palloma.agendame.model.reuniao.Reuniao;
 import br.com.palloma.agendame.utils.DataHora;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,10 @@ public class ReuniaoRepository {
     @Autowired
     DataHora dataHora;
 
-    public void salvarReuniao(DadosReuniao dados) {
+    public void salvarReuniao(DadosCadastrarReuniao dados) {
 
         Random random = new Random();
-        int id = random.nextInt(1000);
+        int id = random.nextInt(100000);
 
         reunioes.add(new Reuniao(id, dataHora.dataHoraAtual(), dados));
 
@@ -29,10 +30,10 @@ public class ReuniaoRepository {
         System.out.println(reunioes);
     }
 
-    public Reuniao buscarReuniao (int id) {
+    public DadosMostrarReuniao buscarReuniao (int id) {
         for (Reuniao reuniao : reunioes) {
             if (reuniao.getId().equals(id)) {
-                return reuniao;
+                return new DadosMostrarReuniao(reuniao);
             }
         }
         return null;

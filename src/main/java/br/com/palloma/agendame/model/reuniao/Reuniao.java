@@ -18,7 +18,7 @@ public class Reuniao {
     private String fonteLead;
     private String informacoes;
 
-    public Reuniao (int id, String dataHoraCriacao , DadosReuniao dadosReuniao) {
+    public Reuniao (int id, String dataHoraCriacao , DadosCadastrarReuniao dadosReuniao) {
         this.id = id;
         this.dataHoraCriacao = dataHoraCriacao;
         this.data = dadosReuniao.data();

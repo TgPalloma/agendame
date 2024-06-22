@@ -1,10 +1,13 @@
 package br.com.palloma.agendame.services;
 
-import br.com.palloma.agendame.model.reuniao.DadosReuniao;
+import br.com.palloma.agendame.model.reuniao.DadosCadastrarReuniao;
+import br.com.palloma.agendame.model.reuniao.DadosMostrarReuniao;
 import br.com.palloma.agendame.model.reuniao.Reuniao;
 import br.com.palloma.agendame.repository.ReuniaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 
 @Service
 public class ReuniaoService {
@@ -12,18 +15,18 @@ public class ReuniaoService {
     @Autowired
     ReuniaoRepository reuniaoRepository;
 
-    public void cadastrarReuniao(DadosReuniao dados) {
+    public void cadastrarReuniao(DadosCadastrarReuniao dados) {
         reuniaoRepository.salvarReuniao(dados);
     }
 
-    public Object buscarListaReunioes() {
+    public ArrayList<Reuniao> buscarListaReunioes() {
         return reuniaoRepository.listaReunioes();
     }
 
-    public Object visualizarReuniao(int id) {
-        Reuniao reuniao = reuniaoRepository.buscarReuniao(id);
+    public DadosMostrarReuniao mostrarReuniao(int id) {
+        DadosMostrarReuniao reuniao = reuniaoRepository.buscarReuniao(id);
 
-        if (!(reuniao == null)) {
+        if (reuniao != null) {
             return reuniao;
         }
         return null;

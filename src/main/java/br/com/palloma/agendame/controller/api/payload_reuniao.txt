@@ -1,0 +1,27 @@
+{
+    "data":"22/10/2024",
+    "hora":"10:20",
+    "nomeEmpresa":"Palloma Inc",
+    "numeroColaboradores":200,
+    "nomeConvidado":"Palloma Muller",
+    "cargoConvidado":"CEO",
+    "telefone":"(51)34697375",
+    "emailConvidado":"palloma.muller@hotmail.com",
+    "vendedor":"Raquel Santos",
+    "fonteLead":"Casamento",
+    "informacoes":"Demonstração para teste da API"
+}
+
+{
+    "data":"04/07/2024",
+    "hora":"11:00",
+    "nomeEmpresa":"Helenara Corp",
+    "numeroColaboradores":15000,
+    "nomeConvidado":"Helenara Oliveira",
+    "cargoConvidado":"Prof Suprema",
+    "telefone":"(51)91134297",
+    "emailConvidado":"Helenara.muller@hotmail.com",
+    "vendedor":"Raquel Santos",
+    "fonteLead":"Sogrisse",
+    "informacoes":"Demonstração para teste da API parte 2"
+}

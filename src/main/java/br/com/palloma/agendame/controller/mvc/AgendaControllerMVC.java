@@ -1,19 +1,15 @@
-package br.com.palloma.agendame.controller;
+package br.com.palloma.agendame.controller.mvc;
 
-import br.com.palloma.agendame.model.reuniao.DadosReuniao;
-import br.com.palloma.agendame.model.reuniao.Reuniao;
+import br.com.palloma.agendame.model.reuniao.DadosCadastrarReuniao;
 import br.com.palloma.agendame.services.ReuniaoService;
-import br.com.palloma.agendame.utils.DataHora;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.crypto.Data;
-
 @Controller
 @RequestMapping("/agenda")
-public class AgendaController {
+public class AgendaControllerMVC {
 
     @Autowired
     ReuniaoService reuniaoService;
@@ -33,13 +29,13 @@ public class AgendaController {
 
     @GetMapping(value = "{id}")
     public String verReuniao (@PathVariable int id, Model model) {
-        model.addAttribute("reuniao",reuniaoService.visualizarReuniao(id));
+        model.addAttribute("reuniao",reuniaoService.mostrarReuniao(id));
         System.out.println(model);
         return "agenda/mostrarreuniao";
     }
 
     @PostMapping("/cadastrareuniao")
-    public String cadastraReuniao(DadosReuniao dados) {
+    public String cadastraReuniao(DadosCadastrarReuniao dados) {
         System.out.println("cadastrar reuniao " + dados);
 
         reuniaoService.cadastrarReuniao(dados);
