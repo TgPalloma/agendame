@@ -33,13 +33,13 @@ public class ReuniaoService {
         return null;
     }
 
-    public Boolean atualizarReuniao(DadosAtualizarReuniao dados) {
-        if(reuniaoRepository.atualizarReuniao(dados)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+//    public Boolean atualizarReuniao(DadosAtualizarReuniao dados) {
+//        if(reuniaoRepository.atualizarReuniao(dados)) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 
     public Boolean excluirReuniao(int id) {
         if (reuniaoRepository.excluirReuniao(id)) {

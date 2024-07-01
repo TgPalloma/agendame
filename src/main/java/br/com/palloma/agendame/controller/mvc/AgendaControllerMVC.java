@@ -1,8 +1,10 @@
 package br.com.palloma.agendame.controller.mvc;
 
+import br.com.palloma.agendame.model.reuniao.DadosAtualizarReuniao;
 import br.com.palloma.agendame.model.reuniao.DadosCadastrarReuniao;
 import br.com.palloma.agendame.services.ReuniaoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -27,10 +29,16 @@ public class AgendaControllerMVC {
         return "agenda/mostraragenda";
     }
 
-    @GetMapping(value = "{id}")
-    public String verReuniao (@PathVariable int id, Model model) {
+    @GetMapping(value = "{id}/{action}")
+    public String verReuniao (@PathVariable int id, @PathVariable String action, Model model) {
+
         model.addAttribute("reuniao",reuniaoService.mostrarReuniao(id));
         System.out.println(model);
+
+        if(action.equals("visualizar")) {
+            return "agenda/atualizareuniao";
+        }
+
         return "agenda/mostrarreuniao";
     }
 
@@ -42,6 +50,11 @@ public class AgendaControllerMVC {
 
         System.out.println("Reunião Cadastrada");
         return "redirect:/agenda";
+    }
+
+    @PutMapping("/atualizareuniao")
+    public void alterar(@RequestBody DadosAtualizarReuniao dados, Model model) {
+        System.out.println();
     }
 
 }

@@ -14,21 +14,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 @RestController
+@RequestMapping("agendame/api")
 public class AgendaControllerAPI {
 
     @Autowired
     ReuniaoService reuniaoService;
 
-    @RequestMapping(value = "agendame/api/reunioes", method = RequestMethod.POST)
-    public ResponseEntity<HttpEntity> castrarReuniao(@RequestBody DadosCadastrarReuniao dados) {
+    @RequestMapping(value = "/reunioes", method = RequestMethod.POST)
+    public ResponseEntity<HttpEntity> castrarReuniao (@RequestBody DadosCadastrarReuniao dados) {
         System.out.println("Processando reuniao com " + dados.nomeEmpresa());
         reuniaoService.cadastrarReuniao(dados);
 
         return ResponseEntity.ok().build();
     }
 
-    @RequestMapping(value = "agendame/api/reunioes/{id}", method = RequestMethod.GET)
-    public ResponseEntity<DadosMostrarReuniao> mostrarReuniao(@PathVariable int id) {
+    @RequestMapping(value = "/reunioes/{id}", method = RequestMethod.GET)
+    public ResponseEntity<DadosMostrarReuniao> mostrarReuniao (@PathVariable int id) {
 
         System.out.println("Buscando reuniao " + id);
         DadosMostrarReuniao dados = reuniaoService.mostrarReuniao(id);
@@ -40,7 +41,7 @@ public class AgendaControllerAPI {
         }
     }
 
-    @RequestMapping(value = "agendame/api/reunioes/listagem", method = RequestMethod.GET)
+    @RequestMapping(value = "/reunioes/listagem", method = RequestMethod.GET)
     public ResponseEntity<ArrayList<Reuniao>> listarReunioes () {
 
         System.out.println("Listando Reuniões");
@@ -49,17 +50,19 @@ public class AgendaControllerAPI {
         return ResponseEntity.ok(reunioes);
     }
 
-    @RequestMapping(value = "agendame/api/reunioes/atualizar", method = RequestMethod.PUT)
-    public ResponseEntity<HttpStatus> atualizarReuniao (@RequestBody DadosAtualizarReuniao dados) {
-        if (reuniaoService.atualizarReuniao(dados)) {
-            return ResponseEntity.ok(HttpStatus.CREATED);
-        } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
-    }
+//    @RequestMapping(value = "/reunioes/atualizar", method = RequestMethod.PUT)
+//    public ResponseEntity<HttpStatus> atualizarReuniao (@RequestBody DadosAtualizarReuniao dados) {
+//
+//        if (reuniaoService.atualizarReuniao(dados)) {
+//            return ResponseEntity.ok(HttpStatus.CREATED);
+//        } else {
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+//        }
+//    }
 
-    @RequestMapping(value = "agendame/api/reunioes/{id}/excluir", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/reunioes/{id}/excluir", method = RequestMethod.DELETE)
     public ResponseEntity<HttpStatus> excluirReuniao(@PathVariable int id) {
+
         if (reuniaoService.excluirReuniao(id)) {
             return ResponseEntity.ok(HttpStatus.ACCEPTED);
         } else {

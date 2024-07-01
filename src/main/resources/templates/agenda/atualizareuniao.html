@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Novo Compromisso</title>
+</head>
+<body>
+
+<h1>Nova Reunião</h1>
+
+<form method="post">
+
+    <input type="hidden" name="_method" value="put" />
+
+    <p><label for="id">id</label>
+    <input id="id" name="id" th:valeu="${reuniao.id}" type="hidden"></p>
+
+    <p th:each="'Data de criação: ' + ${reuniao.dataHoraCriacao}"></p>
+
+    <p><label for="data">Data</label>
+    <input id="data" name="data" th:value="${reuniao.data}"></p>
+
+    <p><label for="hora">Hora</label>
+    <input id="hora" name="hora" th:value="${reuniao.hora}"></p>
+
+    <p><label for="nomeempresa">Nome da Empresa</label>
+    <input id="nomeempresa" name="nomeEmpresa" th:value="${reuniao.nomeEmpresa}"></p>
+
+    <p><label for="numerocolaboradores">Numero de Colaboradores</label>
+    <input id="numerocolaboradores" name="numeroColaboradores" type="number" th:value="${reuniao.numeroColaboradores}"></p>
+
+    <p><label for="nomeconvidado">Nome do Convidado</label>
+    <input id="nomeconvidado" name="nomeConvidado" th:value="${reuniao.nomeConvidado}"></p>
+
+    <p><label for="cargoConvidado">Cargo do Convidado</label>
+    <input id="cargoConvidado" name="cargoConvidado" th:value="${reuniao.cargoConvidado}"></p>
+
+    <p><label for="telefone">Telefone</label>
+    <input id="telefone" name="telefone" th:value="${reuniao.telefone}"></p>
+
+    <p><label for="emailconvidado">Email do Convidado</label>
+    <input id="emailconvidado" name="emailConvidado" type="email" th:value="${reuniao.emailConvidado}"></p>
+
+    <p><label for="vendedor">Vendedor</label>
+    <input id="vendedor" name="vendedor" th:value="${reuniao.vendedor}"></p>
+
+    <p><label for="fontelead">Fonte do Lead</label>
+    <input id="fontelead" name="fonteLead" th:value="${reuniao.fonteLead}"></p>
+
+    <p><label for="informacoes">Informações Adicionais</label>
+    <input id="informacoes" name="informacoes" th:value="${reuniao.informacoes}"></p>
+
+    <input type="submit" value="Alterar reunião">
+
+</form>
+
+</body>
+</html>
